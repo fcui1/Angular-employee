@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{position.PositionName}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <form #f='ngForm' (ngSubmit)="onSubmit(f)">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group" [ngClass]="{'has-error': PositionName.errors}" >
+                <label class="control-label" for="PositionName">Position Name:
+                    <span 
+                    *ngIf="PositionName.errors && PositionName.errors.required"
+                    class="glyphicon glyphicon-exclamation-sign" data-content="Position&nbsp;Name&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span>  
+                </label>
+                <input class="form-control" #PositionName='ngModel' id="PositionName" type="text" [(ngModel)]="position.PositionName" name="PositionName" required />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group" [ngClass]="{'has-error': PositionDescription.errors}">
+                <label class="control-label" for="PositionDescription">Description:
+                    <span 
+                    *ngIf="PositionDescription.errors && PositionDescription.errors.required"
+                    class="glyphicon glyphicon-exclamation-sign" data-content="Position&nbsp;Description&nbsp;is&nbsp;Required" data-placement="right" data-toggle="popover" data-trigger="focus"></span> 
+                </label>
+                <textarea class="form-control" #PositionDescription id="PositionDescription" rows="5" [(ngModel)]="position.PositionDescription" name="PositionDescription" required></textarea>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <a routerLink="/positions" class="btn btn-warning pull-left">Return to Position List</a>
+          <input type="submit" [disabled]="!f.valid"  class="btn btn-primary pull-right" value="Update Position" />
+          <br />
+          <br />
+        </form>
+      </div>
+    </div>
+    <br />
+    <div class="alert alert-success" *ngIf="successMessage">
+      <strong>Success!</strong> Position: "{{position.PositionName}}" was successfully saved.
+    </div>
+  </div>
+</div>

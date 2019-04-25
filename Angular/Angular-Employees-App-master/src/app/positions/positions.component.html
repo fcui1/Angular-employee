@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+        <div *ngIf="loadingError" class="alert alert-danger">
+                <strong>Error!</strong> Unable to load Employees
+            </div>
+    <div class="panel-body">
+        <div class="container bootstrap-header-table">
+            <div class="row header-row">
+                <div>
+                    <div class="col-xs-3 header-column">Position Name</div>
+                    <div class="col-xs-9 header-column">Position Description</div>
+                </div>
+            </div>
+            <div class="row body-rows">
+                <div class="row body-row" *ngFor="let position of positions" (click)="routePosition(position._id)">
+                    <div class="col-xs-3 body-column">{{position.PositionName}}</div>
+                    <div class="col-xs-9 body-column">{{position.PositionDescription}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

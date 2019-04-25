@@ -1,0 +1,14 @@
+<div class="guide panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Event Log</h3>
+  </div>
+  <div class="panel-body">
+      <div *ngIf="empty">
+          Seems like an uneventful day. <span role="img" aria-label="thinking face">🤔</span>
+        </div>
+    <small *ngFor="let entry of entries">
+      {{entry}}
+      <hr />
+    </small>
+  </div>
+</div>
